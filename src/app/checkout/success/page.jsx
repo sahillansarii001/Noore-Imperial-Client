@@ -1,10 +1,11 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { CheckCircle2, ShoppingBag } from 'lucide-react';
 import Button from '@/components/ui/Button';
+import { Loader } from '@/components/ui/Loader';
 
-export default function CheckoutSuccessPage() {
+function SuccessContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const orderId = searchParams.get('order_id');
@@ -59,5 +60,13 @@ export default function CheckoutSuccessPage() {
 
       </div>
     </div>
+  );
+}
+
+export default function CheckoutSuccessPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-black flex items-center justify-center"><Loader /></div>}>
+      <SuccessContent />
+    </Suspense>
   );
 }

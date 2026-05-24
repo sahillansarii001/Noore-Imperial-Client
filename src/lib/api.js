@@ -21,7 +21,8 @@ async function fetchWithAuth(url, options = {}) {
     try {
       response = await fetch(`${API_URL}${url}`, {
         ...options,
-        headers
+        headers,
+        credentials: 'include'
       });
     } catch (networkError) {
       // Catch network errors (like server down) so we don't crash
@@ -31,27 +32,23 @@ async function fetchWithAuth(url, options = {}) {
     // Handle 401 Unauthorized (Token expiry)
     if (response.status === 401) {
       // Try to refresh token
-      // Note: We are relying on httpOnly cookie for refresh token to be sent automatically if we implemented it that way
-      // But we can also call a refresh endpoint
       try {
-        const refreshResponse = await fetch(`${API_URL}/api/auth/refresh`, { method: 'POST', credentials: 'include' });
+        const refreshResponse = await fetch(`${API_URL}/api/auth/refresh-token`, { method: 'POST', credentials: 'include' });
         if (refreshResponse.ok) {
           const data = await refreshResponse.json();
           if (data.success && data.data.accessToken) {
             // Update token and retry
             localStorage.setItem('accessToken', data.data.accessToken);
             headers['Authorization'] = `Bearer ${data.data.accessToken}`;
-            response = await fetch(`${API_URL}${url}`, { ...options, headers });
+            response = await fetch(`${API_URL}${url}`, { ...options, headers, credentials: 'include' });
           }
         } else {
           clearToken();
-          if (typeof window !== 'undefined') window.location.href = '/auth/login';
-          throw new Error('Session expired');
+          return { success: false, message: 'Session expired' };
         }
       } catch (e) {
         clearToken();
-        if (typeof window !== 'undefined') window.location.href = '/auth/login';
-        throw new Error('Session expired');
+        return { success: false, message: 'Session expired' };
       }
     }
 

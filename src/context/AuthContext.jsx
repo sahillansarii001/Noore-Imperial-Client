@@ -16,11 +16,14 @@ export const AuthProvider = ({ children }) => {
           const res = await api.getMe();
           if (res.success) {
             setUser(res.data);
-          } else {
+          } else if (res.message === 'Session expired') {
+            // Only clear token if the server explicitly rejected our auth
             clearToken();
           }
+          // Otherwise keep the token — it might be a transient error
         } catch (error) {
-          clearToken();
+          // Don't clear token on network errors
+          console.error('Auth init error:', error.message);
         }
       }
       setLoading(false);
