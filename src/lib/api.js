@@ -30,7 +30,9 @@ async function fetchWithAuth(url, options = {}) {
     }
 
     // Handle 401 Unauthorized (Token expiry)
-    if (response.status === 401) {
+    const isAuthRoute = url.includes('/api/auth/login') || url.includes('/api/auth/register') || url.includes('/api/auth/refresh-token');
+
+    if (response.status === 401 && !isAuthRoute) {
       // Try to refresh token
       try {
         const refreshResponse = await fetch(`${API_URL}/api/auth/refresh-token`, { method: 'POST', credentials: 'include' });
@@ -41,6 +43,9 @@ async function fetchWithAuth(url, options = {}) {
             localStorage.setItem('accessToken', data.data.accessToken);
             headers['Authorization'] = `Bearer ${data.data.accessToken}`;
             response = await fetch(`${API_URL}${url}`, { ...options, headers, credentials: 'include' });
+          } else {
+            clearToken();
+            return { success: false, message: 'Session expired' };
           }
         } else {
           clearToken();
