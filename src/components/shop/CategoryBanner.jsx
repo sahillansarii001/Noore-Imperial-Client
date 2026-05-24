@@ -1,18 +1,22 @@
 'use client';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 
-export default function CategoryBanner({ title, breadcrumb }) {
+export default function CategoryBanner({ title, breadcrumb, image = "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop" }) {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 150]);
+
   return (
-    <div className="relative bg-[#050505] py-20 border-b border-white/10">
-      <div className="absolute inset-0 z-0 opacity-20">
+    <div className="relative bg-[#050505] py-24 border-b border-white/10 overflow-hidden">
+      <motion.div style={{ y }} className="absolute inset-0 z-0 opacity-30">
         <img 
-          src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop" 
+          src={image} 
           alt="Category Background" 
           className="w-full h-full object-cover object-center mix-blend-overlay"
         />
-      </div>
-      <div className="container mx-auto px-4 relative z-10 text-center">
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+      </motion.div>
+      <div className="container-xl relative z-10 text-center">
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

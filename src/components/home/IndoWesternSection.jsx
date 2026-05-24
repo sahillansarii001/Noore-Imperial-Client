@@ -11,7 +11,8 @@ export default function IndoWesternSection() {
 
   return (
     <section className="py-32 bg-[#050505] relative border-b border-white/5">
-      <div className="container mx-auto px-4 md:px-8">
+      <div className="gold-line absolute top-0 left-0 right-0" />
+      <div className="container-xl">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
           
           <motion.div 

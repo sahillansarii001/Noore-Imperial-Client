@@ -1,5 +1,23 @@
 'use client';
 import { motion } from 'framer-motion';
+const InstagramIcon = ({ className, strokeWidth = 1.5 }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
+);
 
 export default function InstagramFeed() {
   const images = [
@@ -12,10 +30,18 @@ export default function InstagramFeed() {
   ];
 
   return (
-    <section className="py-24 bg-black">
-      <div className="container mx-auto px-4 md:px-8 text-center mb-12">
-        <h2 className="font-cormorant text-4xl text-ivory mb-2">@nooreimperial</h2>
-        <a href="#" className="font-montserrat text-gold tracking-widest text-xs uppercase hover:underline">Follow Us on Instagram</a>
+    <section className="py-24 bg-black relative">
+      <div className="gold-line absolute top-0 left-0 right-0" />
+      <div className="container-xl text-center mb-12">
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <div className="w-6 h-[1px] bg-gold/50" />
+          <span className="font-montserrat text-[9px] tracking-[0.4em] text-gold uppercase">Social</span>
+          <div className="w-6 h-[1px] bg-gold/50" />
+        </div>
+        <h2 className="font-cormorant text-4xl md:text-5xl text-ivory mb-4">@nooreimperial</h2>
+        <a href="#" className="font-montserrat text-grey/60 tracking-widest text-[9px] uppercase hover:text-gold transition-colors inline-flex items-center gap-2">
+          Follow The Journey
+        </a>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 w-full">
@@ -29,9 +55,12 @@ export default function InstagramFeed() {
             transition={{ delay: i * 0.1 }}
             className="group block relative aspect-square overflow-hidden"
           >
-            <img src={img} alt="Instagram post" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <span className="text-white font-montserrat text-xs tracking-widest uppercase border border-white px-4 py-2">View</span>
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-gold/10 transition-colors duration-500 z-10 pointer-events-none" />
+            <img src={img} alt="Instagram post" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 relative z-0" />
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center z-20">
+              <div className="w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center border border-white/20">
+                <InstagramIcon className="w-5 h-5 text-ivory" strokeWidth={1.5} />
+              </div>
             </div>
           </motion.a>
         ))}

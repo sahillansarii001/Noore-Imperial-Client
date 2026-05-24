@@ -11,12 +11,13 @@ export default function KidsCollectionSection() {
   ];
 
   return (
-    <section className="py-24 bg-[#E8E4DF] text-black">
-      <div className="container mx-auto px-4 md:px-8">
+    <section className="py-24 bg-black relative">
+      <div className="gold-line absolute top-0 left-0 right-0" />
+      <div className="container-xl">
         <div className="text-center mb-16">
-          <span className="font-montserrat text-gold-dark tracking-[0.3em] uppercase text-xs mb-4 block">Noore Imperial Petit</span>
-          <h2 className="font-cormorant text-4xl md:text-5xl text-black mb-6">Little Royals</h2>
-          <p className="font-poppins text-[#444] max-w-2xl mx-auto">
+          <span className="font-montserrat text-gold tracking-[0.3em] uppercase text-[10px] mb-4 block">Noore Imperial Petit</span>
+          <h2 className="font-cormorant text-5xl md:text-6xl text-ivory mb-6">Little Royals</h2>
+          <p className="font-poppins text-grey/70 text-sm font-light max-w-2xl mx-auto">
             Luxury knows no age. Discover our meticulously crafted collection for the youngest members of the imperial family.
           </p>
         </div>
@@ -38,8 +39,8 @@ export default function KidsCollectionSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
                   <div className="w-full flex justify-between items-center">
-                    <h3 className="font-cormorant text-2xl text-ivory">{cat.name}</h3>
-                    <span className="font-montserrat text-xs text-gold tracking-widest uppercase border border-gold px-3 py-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <h3 className="font-cormorant text-3xl text-ivory">{cat.name}</h3>
+                    <span className="font-montserrat text-[9px] text-gold tracking-widest uppercase border border-gold/40 px-4 py-2 opacity-0 group-hover:opacity-100 transition-opacity">
                       Shop
                     </span>
                   </div>
@@ -49,9 +50,9 @@ export default function KidsCollectionSection() {
           ))}
         </div>
         
-        <div className="mt-12 text-center">
+        <div className="mt-14 text-center">
           <Link href="/shop/kids">
-            <Button variant="primary" className="!bg-black !text-gold hover:!bg-[#222]">Shop All Kids</Button>
+            <Button variant="outline" className="px-10 py-4 text-[10px] tracking-[0.25em]">Explore Collection</Button>
           </Link>
         </div>
       </div>

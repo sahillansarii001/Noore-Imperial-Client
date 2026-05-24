@@ -16,9 +16,9 @@ export default function WesternCollectionSection() {
 
   return (
     <section ref={containerRef} className="py-32 bg-black overflow-hidden relative">
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+      <div className="gold-line absolute top-0 left-0 right-0" />
 
-      <div className="container mx-auto px-4 md:px-8 mb-16 flex flex-col md:flex-row justify-between items-end gap-6 relative z-10">
+      <div className="container-xl mb-16 flex flex-col md:flex-row justify-between items-end gap-6 relative z-10">
         <div>
           <div className="flex items-center gap-4 mb-4">
             <span className="w-8 h-[1px] bg-gold"></span>
@@ -36,8 +36,8 @@ export default function WesternCollectionSection() {
         </a>
       </div>
 
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="flex gap-6 overflow-x-auto pb-12 pt-4 snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: 'none' }}>
+      <div className="container-xl">
+        <div className="flex gap-6 overflow-x-auto pb-12 pt-4 snap-x snap-mandatory scrollbar-none" style={{ scrollbarWidth: 'none' }}>
           {products.map((product, i) => (
             <motion.div 
               key={product.id}

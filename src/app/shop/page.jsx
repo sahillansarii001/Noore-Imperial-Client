@@ -40,7 +40,7 @@ export default function ShopPage() {
     <div className="min-h-screen bg-black pt-20">
       <CategoryBanner title="Shop All" breadcrumb={false} />
       
-      <div className="container mx-auto px-4 md:px-8 py-16 lg:py-20">
+      <div className="container-xl py-16 lg:py-20">
         <div className="flex flex-col lg:flex-row gap-12 xl:gap-16">
           
           <Filters 

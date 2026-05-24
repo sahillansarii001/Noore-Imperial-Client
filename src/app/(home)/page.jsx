@@ -9,6 +9,7 @@ import FranchiseSection from '@/components/home/FranchiseSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import InstagramFeed from '@/components/home/InstagramFeed';
 import Newsletter from '@/components/home/Newsletter';
+import ConsultationSection from '@/components/home/ConsultationSection';
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <IndoWesternSection />
       <KidsCollectionSection />
       <AcademySection />
+      <ConsultationSection />
       <FranchiseSection />
       <TestimonialsSection />
       <InstagramFeed />
