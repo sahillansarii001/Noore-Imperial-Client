@@ -19,7 +19,7 @@ export default function CalendarPicker({ selectedDate, onSelect, availableDays =
 
   const days = [];
   for (let i = 0; i < firstDayOfMonth; i++) {
-    days.push(<div key={`empty-${i}`} className="w-10 h-10" />);
+    days.push(<div key={`empty-${i}`} className="w-8 h-8 sm:w-10 sm:h-10" />);
   }
 
   const today = new Date();
@@ -44,7 +44,7 @@ export default function CalendarPicker({ selectedDate, onSelect, availableDays =
         disabled={!isAvailable}
         onClick={() => onSelect(date)}
         className={cn(
-          "w-10 h-10 flex items-center justify-center font-poppins text-sm rounded-full transition-colors",
+          "w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center font-poppins text-xs sm:text-sm rounded-full transition-colors",
           !isAvailable && "text-grey/30 cursor-not-allowed",
           isAvailable && !isSelected && "text-ivory hover:bg-white/10",
           isSelected && "bg-gold text-black font-semibold shadow-[0_0_15px_rgba(201,168,76,0.4)]"

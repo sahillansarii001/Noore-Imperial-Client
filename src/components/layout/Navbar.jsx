@@ -87,7 +87,7 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3.5 group shrink-0">
-            <div className="relative w-18 h-18 md:w-12 md:h-12 transition-all duration-500 group-hover:scale-105">
+            <div className="relative w-20 h-20 md:w-12 md:h-12 transition-all duration-500 group-hover:scale-105">
               <Image
                 src="/logo.png"
                 alt="Noore Imperial"

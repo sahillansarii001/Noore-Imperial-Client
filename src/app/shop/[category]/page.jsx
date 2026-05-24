@@ -58,25 +58,30 @@ export default function CategoryShopPage() {
           />
 
           <div className="flex-1">
-            <div className="flex justify-between items-center mb-10 border-b border-white/5 pb-5">
-              <span className="font-poppins text-xs text-grey tracking-wider">Showing {products.length} creations</span>
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 pb-4">
+              <span className="font-poppins text-xs uppercase text-grey tracking-widest whitespace-nowrap">Showing {products.length} creations</span>
               
-              <div className="flex items-center gap-6">
-                <div className="flex items-center gap-2 border-b border-white/10 hover:border-gold/50 transition-colors pb-1">
-                  <span className="font-montserrat text-[10px] uppercase tracking-wider text-grey">Sort:</span>
-                  <select className="bg-transparent text-[10px] font-montserrat uppercase tracking-wider text-ivory border-none focus:ring-0 cursor-pointer p-0 pr-6">
-                    <option value="featured" className="bg-black">Featured</option>
-                    <option value="new" className="bg-black">New Arrivals</option>
-                    <option value="price_asc" className="bg-black">Price: Low to High</option>
-                    <option value="price_desc" className="bg-black">Price: High to Low</option>
-                  </select>
+              <div className="flex flex-wrap items-center justify-between sm:justify-end gap-4 w-full sm:w-auto">
+                <div className="flex items-center gap-3">
+                  <span className="font-montserrat text-[10px] uppercase tracking-widest text-grey">Sort By</span>
+                  <div className="relative">
+                    <select className="appearance-none bg-transparent text-[11px] font-montserrat uppercase tracking-widest text-ivory border border-white/20 hover:border-gold/50 transition-colors focus:border-gold focus:outline-none focus:ring-0 cursor-pointer py-2 pl-4 pr-8 rounded-none">
+                      <option value="featured" className="bg-black">Featured</option>
+                      <option value="new" className="bg-black">New Arrivals</option>
+                      <option value="price_asc" className="bg-black">Price: Low - High</option>
+                      <option value="price_desc" className="bg-black">Price: High - Low</option>
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gold">
+                      <svg className="fill-current h-3 w-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                  </div>
                 </div>
 
                 <button 
-                  className="lg:hidden flex items-center gap-2 text-gold font-montserrat text-[10px] uppercase tracking-widest border border-gold/30 px-3.5 py-1.5 hover:bg-gold hover:text-black transition-colors"
+                  className="lg:hidden flex items-center gap-2 text-gold font-montserrat text-[10px] uppercase tracking-widest border border-gold/30 px-3.5 py-2 hover:bg-gold hover:text-black transition-colors shrink-0"
                   onClick={() => setIsMobileFiltersOpen(true)}
                 >
-                  <SlidersHorizontal className="w-3.5 h-3.5" /> Filters
+                  <SlidersHorizontal className="w-3.5 h-3.5 shrink-0" /> Filters
                 </button>
               </div>
             </div>

@@ -5,25 +5,35 @@ import { Heart, ShoppingBag } from 'lucide-react';
 import { formatPrice } from '@/lib/utils';
 import Badge from '@/components/ui/Badge';
 import { useCart } from '@/hooks/useCart';
+import { useToast } from '@/components/ui/Toast';
 
 export default function ProductCard({ product }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isWishlisted, setIsWishlisted] = useState(false);
   const { addItem, loading } = useCart();
+  const { addToast } = useToast();
   
   const mainImage = product.images?.[0] || 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1983&auto=format&fit=crop';
   const hoverImage = product.images?.[1] || mainImage;
   
-  const handleQuickAdd = (e) => {
+  const handleQuickAdd = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    addItem({ 
-      product_id: product.id, 
-      variant_id: product.variants?.[0]?.id, 
-      quantity: 1, 
-      price: product.price, 
-      name: product.name 
-    });
+
+    try {
+      await addItem({ 
+        product_id: product.id, 
+        variant_id: product.variants?.[0]?.id, 
+        quantity: 1, 
+        price: product.price, 
+        name: product.name,
+        image: product.images?.[0]
+      });
+      addToast('Added to cart successfully', 'success');
+    } catch (err) {
+      console.error(err);
+      addToast(err.message || 'Failed to add item to cart', 'error');
+    }
   };
 
   const handleWishlist = (e) => {
@@ -38,7 +48,7 @@ export default function ProductCard({ product }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Link href={`/product/${product.slug || product.id}`} className="relative aspect-[3/4] overflow-hidden bg-[#0F0F0F] mb-5 block border border-white/5 group-hover:border-gold/20 transition-all duration-700">
+      <Link href={`/product/${product.slug || product.id}`} className="relative aspect-3/4 overflow-hidden bg-[#0F0F0F] mb-5 block border border-white/5 group-hover:border-gold/20 transition-all duration-700">
         {/* Badges */}
         <div className="absolute top-4 left-4 z-20 flex flex-col gap-2">
           {product.is_new && <Badge variant="gold">New</Badge>}
@@ -62,21 +72,21 @@ export default function ProductCard({ product }) {
           <img 
             src={mainImage} 
             alt={product.name} 
-            className={`absolute inset-0 w-full h-full object-cover transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1) ${
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 cubic-bezier(0.16, 1, 0.3, 1) ${
               isHovered ? 'opacity-0 scale-105 blur-[2px]' : 'opacity-100 scale-100'
             }`}
           />
           <img 
             src={hoverImage} 
             alt={`${product.name} alternate`} 
-            className={`absolute inset-0 w-full h-full object-cover transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1) ${
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 cubic-bezier(0.16, 1, 0.3, 1) ${
               isHovered ? 'opacity-100 scale-105' : 'opacity-0 scale-100'
             }`}
           />
         </div>
 
         {/* Luxury subtle shadow gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
         {/* Quick Add overlay */}
         <div className={`absolute bottom-0 left-0 w-full p-4 transform transition-all duration-500 cubic-bezier(0.16, 1, 0.3, 1) ${

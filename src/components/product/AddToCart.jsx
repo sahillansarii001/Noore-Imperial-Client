@@ -23,7 +23,8 @@ export default function AddToCart({ product, selectedVariant }) {
         variant_id: selectedVariant?.id,
         quantity: qty,
         price: product.price,
-        name: product.name
+        name: product.name,
+        image: product.images?.[0]
       });
       addToast('Added to cart successfully', 'success');
     } catch (err) {

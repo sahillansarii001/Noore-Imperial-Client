@@ -41,7 +41,7 @@ export default function BookingForm() {
     
     try {
       const data = {
-        expert_id: formData.expertId,
+        expert_id: formData.expertId === 'any' ? null : formData.expertId,
         branch_id: formData.branchId,
         type: formData.type,
         scheduled_at: new Date(`${formData.date.toISOString().split('T')[0]}T${formData.time}`).toISOString(),
@@ -66,7 +66,7 @@ export default function BookingForm() {
     <div className="max-w-4xl mx-auto">
       {/* Progress */}
       <div className="flex justify-between items-center mb-12 relative">
-        <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/10 -z-10" />
+        <div className="absolute top-1/2 left-0 w-full h-px bg-white/10 -z-10" />
         {steps.map((s, i) => (
           <div key={i} className="flex flex-col items-center gap-2 bg-black px-2">
             <div className={`w-8 h-8 rounded-full flex items-center justify-center border font-cormorant text-lg transition-colors ${
@@ -86,13 +86,13 @@ export default function BookingForm() {
         
         {step === 1 && (
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-            <h2 className="font-cormorant text-3xl text-ivory mb-8 text-center">What type of consultation are you looking for?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <h2 className="font-cormorant text-2xl md:text-3xl text-ivory mb-6 md:mb-8 text-center">What type of consultation are you looking for?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               {['Bridal Trousseau', 'Bespoke Evening Wear', 'Personal Styling', 'Virtual Consultation'].map(type => (
                 <button
                   key={type}
                   onClick={() => setFormData({ ...formData, type })}
-                  className={`p-8 border flex items-center justify-center font-montserrat text-sm tracking-widest uppercase transition-all ${
+                  className={`p-5 md:p-8 border flex items-center justify-center text-center font-montserrat text-[10px] md:text-sm tracking-widest uppercase transition-all ${
                     formData.type === type ? 'border-gold bg-gold/5 text-gold' : 'border-white/10 hover:border-gold/50 text-ivory'
                   }`}
                 >
@@ -105,7 +105,7 @@ export default function BookingForm() {
 
         {step === 2 && (
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-            <h2 className="font-cormorant text-3xl text-ivory mb-8 text-center">Select Your Stylist</h2>
+            <h2 className="font-cormorant text-2xl md:text-3xl text-ivory mb-6 md:mb-8 text-center">Select Your Stylist</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {experts.map(expert => (
                 <ExpertCard 
@@ -115,6 +115,30 @@ export default function BookingForm() {
                   onSelect={(e) => setFormData({ ...formData, expertId: e.id })}
                 />
               ))}
+              <div 
+                className={`bg-[#111] border p-6 flex flex-col items-center text-center transition-colors duration-300 ${
+                  formData.expertId === 'any' ? "border-gold bg-[#1a1814]" : "border-white/10 hover:border-gold/50"
+                }`}
+              >
+                <div className="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-white/10 bg-black/50 flex items-center justify-center">
+                  <span className="font-cormorant text-2xl text-ivory/50">Any</span>
+                </div>
+                <h3 className="font-cormorant text-2xl text-ivory mb-1">Any Available</h3>
+                <span className="font-montserrat text-[10px] text-gold uppercase tracking-widest mb-3">General Booking</span>
+                
+                <div className="flex gap-1 text-gold/30 text-xs mb-4">
+                  ★★★★★
+                </div>
+                
+                <Button 
+                  variant={formData.expertId === 'any' ? 'primary' : 'secondary'} 
+                  size="sm" 
+                  onClick={() => setFormData({ ...formData, expertId: 'any' })}
+                  className="w-full"
+                >
+                  {formData.expertId === 'any' ? 'Selected' : 'Select Stylist'}
+                </Button>
+              </div>
             </div>
           </motion.div>
         )}
@@ -187,27 +211,27 @@ export default function BookingForm() {
         {step === 5 && (
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
             <h2 className="font-cormorant text-3xl text-ivory mb-8 text-center">Review Booking</h2>
-            <div className="max-w-xl mx-auto bg-[#111] border border-gold/30 p-8">
-              <div className="space-y-4 font-poppins text-sm text-ivory">
-                <div className="flex justify-between border-b border-white/5 pb-4">
-                  <span className="text-grey">Type</span>
-                  <span>{formData.type}</span>
+            <div className="max-w-xl mx-auto bg-[#111] border border-gold/30 p-6 md:p-8">
+              <div className="space-y-6 font-poppins text-sm text-ivory">
+                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 border-b border-white/5 pb-4">
+                  <span className="text-grey text-xs sm:text-sm uppercase tracking-wider">Type</span>
+                  <span className="sm:text-right">{formData.type}</span>
                 </div>
-                <div className="flex justify-between border-b border-white/5 pb-4">
-                  <span className="text-grey">Stylist</span>
-                  <span>{experts.find(e => e.id === formData.expertId)?.user?.name || 'Any Available'}</span>
+                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 border-b border-white/5 pb-4">
+                  <span className="text-grey text-xs sm:text-sm uppercase tracking-wider">Stylist</span>
+                  <span className="sm:text-right">{experts.find(e => e.id === formData.expertId)?.user?.name || 'Any Available'}</span>
                 </div>
-                <div className="flex justify-between border-b border-white/5 pb-4">
-                  <span className="text-grey">Date & Time</span>
-                  <span>{formData.date?.toLocaleDateString()} at {formData.time}</span>
+                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 border-b border-white/5 pb-4">
+                  <span className="text-grey text-xs sm:text-sm uppercase tracking-wider">Date & Time</span>
+                  <span className="sm:text-right">{formData.date?.toLocaleDateString()} at {formData.time}</span>
                 </div>
-                <div className="flex justify-between border-b border-white/5 pb-4">
-                  <span className="text-grey">Location</span>
-                  <span>{formData.branchId === 'virtual' ? 'Virtual' : branches.find(b => b.id === formData.branchId)?.name}</span>
+                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 border-b border-white/5 pb-4">
+                  <span className="text-grey text-xs sm:text-sm uppercase tracking-wider">Location</span>
+                  <span className="sm:text-right">{formData.branchId === 'virtual' ? 'Virtual' : branches.find(b => b.id === formData.branchId)?.name}</span>
                 </div>
-                <div className="flex justify-between pt-4 border-t border-gold/30 mt-8">
+                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 pt-2 border-t border-gold/30 mt-8">
                   <span className="font-montserrat uppercase tracking-widest text-gold text-xs">Booking Fee</span>
-                  <span className="text-lg">₹5,000</span>
+                  <span className="text-lg text-gold sm:text-right">₹5,000</span>
                 </div>
               </div>
             </div>
@@ -217,27 +241,32 @@ export default function BookingForm() {
       </div>
 
       {/* Navigation */}
-      <div className="flex justify-between mt-8">
+      <div className="flex flex-col-reverse sm:flex-row justify-between gap-4 mt-8">
         {step > 1 ? (
-          <Button variant="ghost" onClick={handlePrev}>Back</Button>
-        ) : <div />}
+          <Button variant="ghost" className="w-full sm:w-auto" onClick={handlePrev}>Back</Button>
+        ) : <div className="hidden sm:block" />}
         
         {step < 5 ? (
-          <Button 
-            variant="primary" 
-            onClick={handleNext}
-            disabled={
-              (step === 1 && !formData.type) ||
-              (step === 2 && !formData.expertId) ||
-              (step === 3 && (!formData.date || !formData.time || !formData.branchId))
-            }
-          >
-            Continue
-          </Button>
+          <div className="w-full sm:w-auto flex justify-end">
+            <Button 
+              variant="primary" 
+              className="w-full sm:w-auto"
+              onClick={handleNext}
+              disabled={
+                (step === 1 && !formData.type) ||
+                (step === 2 && !formData.expertId) ||
+                (step === 3 && (!formData.date || !formData.time || !formData.branchId))
+              }
+            >
+              Continue
+            </Button>
+          </div>
         ) : (
-          <Button variant="primary" onClick={handleSubmit} isLoading={loading}>
-            Pay & Confirm
-          </Button>
+          <div className="w-full sm:w-auto flex justify-end">
+            <Button variant="primary" className="w-full sm:w-auto" onClick={handleSubmit} isLoading={loading}>
+              Pay & Confirm
+            </Button>
+          </div>
         )}
       </div>
 

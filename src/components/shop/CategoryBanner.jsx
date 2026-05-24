@@ -20,7 +20,7 @@ export default function CategoryBanner({ title, breadcrumb, image = "https://ima
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="font-cormorant text-5xl md:text-6xl text-gold mb-4 uppercase tracking-widest"
+          className="font-cormorant text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-gold mb-4 uppercase tracking-widest px-4"
         >
           {title}
         </motion.h1>

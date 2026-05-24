@@ -47,6 +47,28 @@ export const CartProvider = ({ children }) => {
   }, [items, isAuthenticated, loading]);
 
   const addItem = async (item) => {
+    // If it is a dummy product from the homepage (short ID format instead of UUID)
+    // we bypass the API call and just add it to local state so the user can test the UI
+    if (item.product_id && String(item.product_id).length < 10) {
+      setItems(prev => {
+        const existing = prev.find(i => i.product_id === item.product_id && i.variant_id === item.variant_id);
+        if (existing) {
+          return prev.map(i => i === existing ? { ...i, quantity: i.quantity + item.quantity } : i);
+        }
+        return [...prev, { 
+          ...item, 
+          cart_item_id: Math.random().toString(36).substr(2, 9),
+          product: { 
+            id: item.product_id, 
+            name: item.name, 
+            images: [item.image || 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1983&auto=format&fit=crop'], 
+            price: item.price 
+          } 
+        }];
+      });
+      return;
+    }
+
     if (isAuthenticated) {
       try {
         await api.addToCart({ product_id: item.product_id, variant_id: item.variant_id, quantity: item.quantity });
@@ -68,7 +90,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeItem = async (cartItemId) => {
-    if (isAuthenticated) {
+    if (isAuthenticated && String(cartItemId).length > 15) {
       try {
         await api.removeFromCart(cartItemId);
         setItems(prev => prev.filter(i => i.cart_item_id !== cartItemId));
@@ -81,7 +103,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const updateQty = async (cartItemId, quantity) => {
-    if (isAuthenticated) {
+    if (isAuthenticated && String(cartItemId).length > 15) {
       try {
         await api.updateCartItem(cartItemId, quantity);
         setItems(prev => prev.map(i => i.cart_item_id === cartItemId ? { ...i, quantity } : i));
