@@ -6,7 +6,7 @@ export default function Newsletter() {
   return (
     <section className="py-32 bg-black relative overflow-hidden">
       <div className="gold-line absolute top-0 left-0 right-0" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gold/[0.03] rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gold/3 rounded-full blur-[100px] pointer-events-none" />
       
       <div className="container-xl relative z-10 text-center max-w-3xl">
         <motion.div
@@ -15,9 +15,9 @@ export default function Newsletter() {
           viewport={{ once: true }}
         >
           <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-8 h-[1px] bg-gold/50" />
+            <div className="w-8 h-px bg-gold/50" />
             <span className="font-montserrat text-[9px] tracking-[0.4em] text-gold uppercase">The Inner Circle</span>
-            <div className="w-8 h-[1px] bg-gold/50" />
+            <div className="w-8 h-px bg-gold/50" />
           </div>
           <h2 className="font-cormorant text-5xl md:text-6xl text-ivory mb-6 leading-[0.9]">Join The<br /><em className="font-playfair text-gradient-gold">Imperial Access</em></h2>
           <p className="font-poppins text-grey/60 font-light mb-12 text-sm leading-[1.8]">
@@ -39,7 +39,7 @@ export default function Newsletter() {
               >
                 Email Address
               </label>
-              <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-gold group-focus-within:w-full transition-all duration-500" />
+              <div className="absolute bottom-0 left-0 w-0 h-px bg-gold group-focus-within:w-full transition-all duration-500" />
             </div>
             <button 
               type="submit" 

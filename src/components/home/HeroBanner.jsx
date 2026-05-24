@@ -12,11 +12,11 @@ export default function HeroBanner() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   
   return (
-    <section ref={ref} className="relative h-[100dvh] min-h-[700px] w-full overflow-hidden bg-black flex flex-col items-center justify-center">
+    <section ref={ref} className="relative h-dvh min-h-[700px] w-full overflow-hidden bg-black flex flex-col items-center justify-center">
       {/* Background Image with Parallax */}
       <motion.div style={{ y: imgY }} className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black/30 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/60 z-10" />
+        <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-black/60 z-10" />
         <motion.img
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
@@ -38,11 +38,11 @@ export default function HeroBanner() {
           transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
           className="flex items-center gap-4 mb-6"
         >
-          <div className="w-12 h-[1px] bg-gold/50" />
+          <div className="w-12 h-px bg-gold/50" />
           <span className="font-montserrat text-[10px] tracking-[0.4em] text-gold uppercase">
             The Epitome of Elegance
           </span>
-          <div className="w-12 h-[1px] bg-gold/50" />
+          <div className="w-12 h-px bg-gold/50" />
         </motion.div>
         
         <motion.h1

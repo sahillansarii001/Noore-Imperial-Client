@@ -21,7 +21,7 @@ export default function WesternCollectionSection() {
       <div className="container-xl mb-16 flex flex-col md:flex-row justify-between items-end gap-6 relative z-10">
         <div>
           <div className="flex items-center gap-4 mb-4">
-            <span className="w-8 h-[1px] bg-gold"></span>
+            <span className="w-8 h-px bg-gold"></span>
             <span className="font-montserrat text-gold tracking-[0.4em] uppercase text-[10px]">Pret-a-Porter</span>
           </div>
           <h2 className="font-cormorant text-5xl md:text-6xl lg:text-7xl text-ivory tracking-wide">The Western Edit</h2>
@@ -30,7 +30,7 @@ export default function WesternCollectionSection() {
           <span className="font-montserrat text-[10px] tracking-[0.3em] text-ivory uppercase group-hover:text-gold transition-colors duration-300">
             View All Pieces
           </span>
-          <div className="w-12 h-[1px] bg-white/20 relative group-hover:w-16 group-hover:bg-gold transition-all duration-500">
+          <div className="w-12 h-px bg-white/20 relative group-hover:w-16 group-hover:bg-gold transition-all duration-500">
             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 border-t border-r border-white/20 group-hover:border-gold rotate-45 transition-colors duration-300"></div>
           </div>
         </a>

@@ -69,10 +69,11 @@ const SOCIALS = [
 ];
 
 export default function Footer() {
+
   return (
     <footer className="relative bg-[#050505] overflow-hidden text-white border-t border-white/5">
       {/* Ambient glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gold/[0.03] rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gold/3 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container-xl relative z-10">
         
@@ -97,7 +98,7 @@ export default function Footer() {
                 <ArrowRight className="w-5 h-5" />
               </button>
             </div>
-            <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-gold transition-all duration-700 ease-out group-hover:w-full" />
+            <div className="absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-700 ease-out group-hover:w-full" />
           </form>
         </div>
 
@@ -107,7 +108,7 @@ export default function Footer() {
           {/* Brand col */}
           <div className="lg:col-span-4 flex flex-col items-start">
             <Link href="/" className="inline-flex items-center gap-4 mb-6 group">
-              <div className="relative w-12 h-12 flex-shrink-0">
+              <div className="relative w-12 h-12 shrink-0">
                 <Image
                   src="/logo.png"
                   alt="Noore Imperial"
@@ -125,7 +126,7 @@ export default function Footer() {
               </div>
             </Link>
 
-            <p className="font-playfair text-white/50 text-sm leading-[2] max-w-sm mb-8 font-light italic">
+            <p className="font-playfair text-white/50 text-sm leading-loose max-w-sm mb-8 font-light italic">
               Elevating elegance to an imperial standard. Where timeless tradition meets contemporary couture.
             </p>
           </div>
@@ -135,7 +136,7 @@ export default function Footer() {
             <div key={col.title} className="lg:col-span-2">
               <h4 className="font-montserrat text-[10px] tracking-[0.3em] uppercase text-white mb-8 relative inline-block">
                 {col.title}
-                <span className="absolute -bottom-2 left-0 w-4 h-[1px] bg-gold/50" />
+                <span className="absolute -bottom-2 left-0 w-4 h-px bg-gold/50" />
               </h4>
               <ul className="space-y-4">
                 {col.links.map(link => (
@@ -144,7 +145,7 @@ export default function Footer() {
                       href={link.path}
                       className="font-poppins text-[12px] text-white/50 hover:text-gold transition-colors duration-300 inline-flex items-center gap-2 group"
                     >
-                      <span className="w-0 h-[1px] bg-gold group-hover:w-3 transition-all duration-300 flex-shrink-0" />
+                      <span className="w-0 h-px bg-gold group-hover:w-3 transition-all duration-300 shrink-0" />
                       {link.label}
                     </Link>
                   </li>
@@ -157,7 +158,7 @@ export default function Footer() {
           <div className="lg:col-span-4 lg:pl-12">
             <h4 className="font-montserrat text-[10px] tracking-[0.3em] uppercase text-white mb-8 relative inline-block">
               Connect
-              <span className="absolute -bottom-2 left-0 w-4 h-[1px] bg-gold/50" />
+              <span className="absolute -bottom-2 left-0 w-4 h-px bg-gold/50" />
             </h4>
             
             <div className="space-y-5 mb-10">

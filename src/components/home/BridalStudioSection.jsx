@@ -22,7 +22,7 @@ export default function BridalStudioSection() {
   return (
     <section ref={ref} className="section bg-[#080808] relative overflow-hidden">
       {/* Ambient */}
-      <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-gold/[0.03] rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-gold/3 rounded-full blur-[120px] pointer-events-none" />
       <div className="gold-line absolute top-0 left-0 right-0" />
 
       <div className="container-xl">
@@ -52,7 +52,7 @@ export default function BridalStudioSection() {
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mb-10 pb-10 border-b border-white/[0.06]">
+            <div className="grid grid-cols-3 gap-6 mb-10 pb-10 border-b border-white/6">
               {[['500+', 'Happy Brides'], ['50+', 'Artisans'], ['15+', 'Years']].map(([n, l]) => (
                 <div key={l}>
                   <p className="font-cormorant text-4xl text-gold leading-none mb-1">{n}</p>
@@ -72,7 +72,7 @@ export default function BridalStudioSection() {
                   transition={{ delay: i * 0.07 }}
                   className="flex items-center gap-2.5 py-2"
                 >
-                  <div className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />
+                  <div className="w-1 h-1 rounded-full bg-gold shrink-0" />
                   <span className="font-poppins text-xs text-grey/70">{s}</span>
                 </motion.div>
               ))}
@@ -84,7 +84,7 @@ export default function BridalStudioSection() {
             >
               Explore The Studio
               <div className="flex items-center gap-1">
-                <div className="w-8 h-[1px] bg-current group-hover:w-12 transition-all duration-500" />
+                <div className="w-8 h-px bg-current group-hover:w-12 transition-all duration-500" />
                 <ArrowRight className="w-3 h-3" />
               </div>
             </Link>

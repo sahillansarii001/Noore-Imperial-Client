@@ -34,9 +34,9 @@ export default function InstagramFeed() {
       <div className="gold-line absolute top-0 left-0 right-0" />
       <div className="container-xl text-center mb-12">
         <div className="flex items-center justify-center gap-3 mb-6">
-          <div className="w-6 h-[1px] bg-gold/50" />
+          <div className="w-6 h-px bg-gold/50" />
           <span className="font-montserrat text-[9px] tracking-[0.4em] text-gold uppercase">Social</span>
-          <div className="w-6 h-[1px] bg-gold/50" />
+          <div className="w-6 h-px bg-gold/50" />
         </div>
         <h2 className="font-cormorant text-4xl md:text-5xl text-ivory mb-4">@nooreimperial</h2>
         <a href="#" className="font-montserrat text-grey/60 tracking-widest text-[9px] uppercase hover:text-gold transition-colors inline-flex items-center gap-2">

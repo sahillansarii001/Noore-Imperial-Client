@@ -73,7 +73,7 @@ export default function Navbar() {
   return (
     <>
       <motion.header
-        className={`fixed left-0 right-0 z-40 transition-all duration-500 bg-black/30 backdrop-blur-lg border-b border-white/[0.04] shadow-[0_8px_32px_rgba(0,0,0,0.4)] top-0`}
+        className={`fixed left-0 right-0 z-40 transition-all duration-500 bg-black/30 backdrop-blur-lg border-b border-white/4 shadow-[0_8px_32px_rgba(0,0,0,0.4)] top-0`}
       >
         <div className="container-xl flex items-center justify-between h-[68px] md:h-[76px]">
           {/* Mobile hamburger */}
@@ -86,8 +86,8 @@ export default function Navbar() {
           </button>
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3.5 group flex-shrink-0">
-            <div className="relative w-10 h-10 md:w-11 md:h-11 transition-all duration-500 group-hover:scale-105">
+          <Link href="/" className="flex items-center gap-3.5 group shrink-0">
+            <div className="relative w-14 h-14 md:w-12 md:h-12 transition-all duration-500 group-hover:scale-105">
               <Image
                 src="/logo.png"
                 alt="Noore Imperial"
@@ -127,7 +127,7 @@ export default function Navbar() {
                   {link.mega && (
                     <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${megaOpen === link.name ? 'rotate-180 text-gold' : ''}`} />
                   )}
-                  <span className={`absolute bottom-0 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent transform origin-center transition-transform duration-400 ${
+                  <span className={`absolute bottom-0 left-4 right-4 h-px bg-linear-to-r from-transparent via-gold to-transparent transform origin-center transition-transform duration-400 ${
                     pathname.startsWith(link.path) && link.path !== '/' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                   }`} />
                 </Link>
@@ -145,13 +145,13 @@ export default function Navbar() {
                       className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-72 glass-dark border border-white/[0.07] shadow-[0_24px_80px_rgba(0,0,0,0.7)] overflow-hidden"
                     >
                       {/* Top gold line */}
-                      <div className="h-[1px] bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+                      <div className="h-px bg-linear-to-r from-transparent via-gold/50 to-transparent" />
                       <div className="p-2.5">
                         {link.mega.map(item => (
                           <Link
                             key={item.label}
                             href={item.path}
-                            className="flex items-center justify-between px-4 py-2.5 hover:bg-white/[0.04] group/item transition-colors duration-200"
+                            className="flex items-center justify-between px-4 py-2.5 hover:bg-white/4 group/item transition-colors duration-200"
                           >
                             <span className="font-montserrat text-[10px] tracking-[0.18em] uppercase text-ivory/60 group-hover/item:text-ivory transition-colors duration-200">
                               {item.label}
@@ -167,10 +167,10 @@ export default function Navbar() {
                           </Link>
                         ))}
                       </div>
-                      <div className="px-4 py-3 border-t border-white/[0.05] bg-white/[0.015]">
+                      <div className="px-4 py-3 border-t border-white/5 bg-white/1.5">
                         <Link href="/shop" className="font-montserrat text-[9px] tracking-[0.22em] uppercase text-gold/70 hover:text-gold transition-colors flex items-center gap-2 group/all">
                           View All Collections
-                          <span className="w-4 h-[1px] bg-current group-hover/all:w-6 transition-all duration-300" />
+                          <span className="w-4 h-px bg-current group-hover/all:w-6 transition-all duration-300" />
                         </Link>
                       </div>
                     </motion.div>
@@ -200,7 +200,7 @@ export default function Navbar() {
                     placeholder="Search collections..."
                     className="bg-transparent text-ivory text-[11px] font-poppins placeholder-grey/30 py-1.5 w-full focus:outline-none tracking-wide"
                   />
-                  <button onClick={() => { setSearchOpen(false); setSearchVal(''); }} className="text-grey hover:text-gold transition-colors flex-shrink-0 p-1">
+                  <button onClick={() => { setSearchOpen(false); setSearchVal(''); }} className="text-grey hover:text-gold transition-colors shrink-0 p-1">
                     <X className="w-3.5 h-3.5" />
                   </button>
                 </motion.div>
@@ -224,7 +224,7 @@ export default function Navbar() {
               <User className="w-4 h-4" strokeWidth={1.5} />
             </Link>
 
-            <Link href="/cart" className="relative p-2.5 text-ivory/50 hover:text-gold transition-colors duration-300 group" aria-label="Cart">
+            <Link href="/cart" prefetch={false} className="relative p-2.5 text-ivory/50 hover:text-gold transition-colors duration-300 group" aria-label="Cart">
               <ShoppingBag className="w-4 h-4" strokeWidth={1.5} />
               <AnimatePresence>
                 {itemCount > 0 && (

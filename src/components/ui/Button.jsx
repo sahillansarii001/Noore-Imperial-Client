@@ -36,7 +36,7 @@ export default function Button({
       {...props}
     >
       {/* Shimmer effect */}
-      <span className="absolute inset-0 bg-white/[0.04] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out pointer-events-none" />
+      <span className="absolute inset-0 bg-white/4 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out pointer-events-none" />
       
       {isLoading && <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin relative z-10" />}
       <span className="relative z-10 flex items-center justify-center gap-2">{children}</span>

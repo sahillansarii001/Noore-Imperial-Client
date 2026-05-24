@@ -93,7 +93,7 @@ export default function AcademySection() {
               >
                 <Link
                   href="/academy"
-                  className="group flex items-center justify-between p-5 card-luxury rounded-sm hover:bg-white/[0.02] transition-all"
+                  className="group flex items-center justify-between p-5 card-luxury rounded-sm hover:bg-white/2 transition-all"
                 >
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3 mb-1.5">
@@ -108,7 +108,7 @@ export default function AcademySection() {
                       {course.duration} · {course.students} students
                     </p>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-grey/30 group-hover:text-gold group-hover:translate-x-1 transition-all flex-shrink-0 ml-4" />
+                  <ArrowRight className="w-4 h-4 text-grey/30 group-hover:text-gold group-hover:translate-x-1 transition-all shrink-0 ml-4" />
                 </Link>
               </motion.div>
             ))}
@@ -119,7 +119,7 @@ export default function AcademySection() {
                 className="font-montserrat text-[9px] tracking-[0.25em] uppercase text-grey/40 hover:text-gold transition-colors flex items-center gap-2"
               >
                 View all 20+ courses
-                <div className="w-6 h-[1px] bg-current" />
+                <div className="w-6 h-px bg-current" />
               </Link>
             </div>
           </motion.div>

@@ -42,7 +42,7 @@ export default function IndoWesternSection() {
                 <span className="font-montserrat text-[10px] tracking-[0.3em] text-ivory uppercase group-hover/btn:text-gold transition-colors duration-300">
                   View Collection
                 </span>
-                <div className="w-12 h-[1px] bg-white/20 relative group-hover/btn:w-20 group-hover/btn:bg-gold transition-all duration-500">
+                <div className="w-12 h-px bg-white/20 relative group-hover/btn:w-20 group-hover/btn:bg-gold transition-all duration-500">
                   <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 border-t border-r border-white/20 group-hover/btn:border-gold rotate-45 transition-colors duration-300"></div>
                 </div>
               </Link>
@@ -57,7 +57,7 @@ export default function IndoWesternSection() {
               transition={{ duration: 0.8 }}
               className="relative mb-16 pl-8 md:pl-12 border-l border-gold/20"
             >
-              <div className="absolute -left-[5px] top-0 w-2.5 h-2.5 rounded-full bg-gold/50" />
+              <div className="absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full bg-gold/50" />
               <p className="font-playfair text-xl md:text-2xl text-grey/90 italic font-light leading-relaxed">
                 "Where heritage craftsmanship meets modern silhouettes. Redefining traditional wear for the contemporary muse."
               </p>

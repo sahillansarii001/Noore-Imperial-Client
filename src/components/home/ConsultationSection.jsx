@@ -38,7 +38,7 @@ export default function ConsultationSection() {
               <img
                 src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1983&auto=format&fit=crop"
                 alt="Consultation Session"
-                className="zoom-target w-full h-full object-cover grayscale-[30%]"
+                className="zoom-target w-full h-full object-cover grayscale-30"
               />
               <div className="absolute inset-4 border border-white/10 z-20 pointer-events-none" />
             </motion.div>
@@ -48,7 +48,7 @@ export default function ConsultationSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute bottom-0 right-0 w-[55%] h-[45%] overflow-hidden img-zoom shadow-[-20px_-20px_60px_rgba(0,0,0,0.8)] bg-[#0A0A0A] p-3"
+              className="absolute bottom-0 right-0 w-[55%] h-[45%] overflow-hidden img-zoom shadow-[-20px_-20px_60px_rgba(0,0,0,0.8)] bg-black p-3"
             >
               <img
                 src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1974&auto=format&fit=crop"

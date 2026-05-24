@@ -14,7 +14,7 @@ export default function CategoryBanner({ title, breadcrumb, image = "https://ima
           alt="Category Background" 
           className="w-full h-full object-cover object-center mix-blend-overlay"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
       </motion.div>
       <div className="container-xl relative z-10 text-center">
         <motion.h1 

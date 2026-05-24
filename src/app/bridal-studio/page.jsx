@@ -72,7 +72,7 @@ export default function BridalStudioPage() {
 
       {/* Intro Section */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-gold/[0.03] rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-gold/3 rounded-full blur-[120px] pointer-events-none" />
         
         <div className="container-xl px-4 text-center max-w-4xl relative z-10">
           <motion.div
@@ -101,7 +101,7 @@ export default function BridalStudioPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-black relative border-y border-white/[0.05]">
+      <section className="py-20 bg-black relative border-y border-white/5">
         <div className="container-xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
             {SERVICES.map((service, idx) => (
@@ -113,7 +113,7 @@ export default function BridalStudioPage() {
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 className="flex gap-6 group"
               >
-                <div className="w-12 h-12 flex-shrink-0 border border-gold/20 flex items-center justify-center group-hover:border-gold transition-colors duration-500">
+                <div className="w-12 h-12 shrink-0 border border-gold/20 flex items-center justify-center group-hover:border-gold transition-colors duration-500">
                   <span className="font-cormorant text-xl text-gold">0{idx + 1}</span>
                 </div>
                 <div>
@@ -153,7 +153,7 @@ export default function BridalStudioPage() {
                 <p className="font-poppins text-xs text-grey/50 leading-relaxed">{step.desc}</p>
                 
                 {idx !== PROCESS.length - 1 && (
-                  <div className="hidden md:block absolute top-12 -right-4 w-8 h-[1px] bg-gold/30" />
+                  <div className="hidden md:block absolute top-12 -right-4 w-8 h-px bg-gold/30" />
                 )}
               </motion.div>
             ))}
@@ -167,9 +167,8 @@ export default function BridalStudioPage() {
           <img 
             src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1964&auto=format&fit=crop" 
             alt="Bridal Details" 
-            className="w-full h-full object-cover grayscale-[20%]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/80" />
+            className="w-full h-full object-cover grayscale-20"/>
+          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black/80" />
         </motion.div>
         
         <div className="relative z-10 text-center px-4 max-w-3xl">
@@ -177,7 +176,7 @@ export default function BridalStudioPage() {
           <h3 className="font-cormorant text-4xl md:text-6xl text-gold italic leading-tight mb-8 drop-shadow-xl">
             "Crafting legends,<br/>one gown at a time."
           </h3>
-          <div className="w-24 h-[1px] bg-gold/50 mx-auto" />
+          <div className="w-24 h-px bg-gold/50 mx-auto" />
         </div>
       </section>
 
@@ -191,7 +190,7 @@ export default function BridalStudioPage() {
                 initial={{ opacity: 0, x: i === 0 ? -20 : 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="p-10 border border-white/5 bg-white/[0.01]"
+                className="p-10 border border-white/5 bg-white/1"
               >
                 <div className="flex gap-1 mb-6">
                   {[1, 2, 3, 4, 5].map(star => (
@@ -211,7 +210,7 @@ export default function BridalStudioPage() {
 
       {/* CTA Section */}
       <section className="py-32 border-t border-gold/10 relative overflow-hidden bg-black">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gold/[0.05] rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
         
         <div className="container-xl text-center relative z-10">
           <h2 className="font-cormorant text-5xl text-ivory mb-6">Begin Your Journey</h2>

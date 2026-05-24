@@ -39,7 +39,7 @@ export default function FranchisePage() {
             
             {/* Model 2 */}
             <div className="card-luxury p-8 rounded-sm text-center border-gold/30 shadow-[0_0_30px_rgba(201,168,76,0.05)] relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent" />
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-linear-to-r from-transparent via-gold to-transparent" />
               <div className="w-14 h-14 mx-auto rounded-full bg-gold/10 flex items-center justify-center border border-gold/30 mb-6">
                 <MapPin className="w-5 h-5 text-gold" />
               </div>
